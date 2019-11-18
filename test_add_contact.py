@@ -14,6 +14,7 @@ class TestAddContact(unittest.TestCase):
         driver.get("http://localhost/addressbook/")
 
     def login(self, driver, username, password):
+        self.open_home_page(driver)
         driver.find_element_by_name("user").click()
         driver.find_element_by_name("user").clear()
         driver.find_element_by_name("user").send_keys(username)
@@ -52,14 +53,12 @@ class TestAddContact(unittest.TestCase):
 
     def test_add_contact(self):
         driver = self.driver
-        self.open_home_page(driver)
         self.login(driver, username="admin", password="secret")
         self.create_contact(driver, Contact(firstname="Anna", lastname="Nowak", title="miss", mobile="692444520", email="anna@interia.pl", address="ul. Nowa 1, Katowice"))
         self.logout(driver)
 
     def test_add_empty_contact(self):
         driver = self.driver
-        self.open_home_page(driver)
         self.login(driver, username="admin", password="secret")
         self.create_contact(driver, Contact(firstname="", lastname="", title="", mobile="", email="", address=""))
         self.logout(driver)
