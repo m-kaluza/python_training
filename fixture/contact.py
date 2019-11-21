@@ -1,3 +1,4 @@
+
 class ContactHelper:
 
     def __init__(self, app):
@@ -28,3 +29,4 @@ class ContactHelper:
         wd.find_element_by_name("address").send_keys(contact.address)
         # submit contact creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+
