@@ -11,6 +11,7 @@ class Application:
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
+        self.accept_next_alert = True
 
     def open_home_page(self):
         wd = self.wd

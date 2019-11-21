@@ -1,7 +1,7 @@
-
 class ContactHelper:
 
     def __init__(self, app):
+        self.accept_next_alert = True
         self.app = app
 
     def create(self, contact):
@@ -30,7 +30,6 @@ class ContactHelper:
         # submit contact creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
-
     def edit_first_contact(self, contact):
         wd = self.app.wd
         # init contact edition
@@ -58,4 +57,9 @@ class ContactHelper:
         # submit contact edition
         wd.find_element_by_xpath("(//input[@name='update'])[2]").click()
 
-
+    def del_first_contact(self):
+        wd = self.app.wd
+        # init contact deletion
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        wd.switch_to.alert.accept()
