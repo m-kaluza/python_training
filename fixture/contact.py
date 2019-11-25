@@ -30,7 +30,7 @@ class ContactHelper:
         # submit contact creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
-    def edit_first_contact(self, contact):
+    def modify_first_contact(self, contact):
         wd = self.app.wd
         # init contact edition
         wd.find_element_by_name("selected[]").click()
