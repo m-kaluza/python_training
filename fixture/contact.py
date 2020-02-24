@@ -50,12 +50,20 @@ class ContactHelper:
     def modify_contact_by_index(self, index, new_contact_data):
         wd = self.app.wd
         # init contact edition
-        # self.app.navigation.open_home_page()
+        # self.app.open_home_page()
         self.select_contact_by_index(index)
         wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         self.fill_contact_form(new_contact_data)
         # submit contact edition
         wd.find_element_by_xpath("(//input[@name='update'])[2]").click()
+        self.contact_cache = None
+
+    def open_contact_to_edit_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[7]
+        cell.find_element_by_tag_name("a").click()
         self.contact_cache = None
 
     def open_contact_view_by_index(self, index):
@@ -69,7 +77,7 @@ class ContactHelper:
     def get_contact_info_from_edit_page(self, index):
         wd = self.app.wd
         self.app.open_home_page()
-        self.modify_contact_by_index(index)
+        self.open_contact_to_edit_by_index(index)
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
         lastname = wd.find_element_by_name("lastname").get_attribute("value")
         id = wd.find_element_by_name("id").get_attribute("value")
@@ -116,7 +124,8 @@ class ContactHelper:
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 all_phones = cells[5].text.splitlines()
                 # self.contact_cache.append(Contact(id=id, firstname=firstname, lastname=lastname))
-                self.contact_cache.append(Contact(id=id, firstname=firstname, lastname=lastname, home=all_phones[0],
-                                                  mobile=all_phones[1], work=all_phones[2],
-                                                  secondaryphone=all_phones[3]))
+                self.contact_cache.append(
+                     Contact(id=id, firstname=firstname, lastname=lastname, home=all_phones[0], mobile=all_phones[1],
+                             work=all_phones[2], secondaryphone=all_phones[3]))
+
         return list(self.contact_cache)
