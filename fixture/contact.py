@@ -133,10 +133,13 @@ class ContactHelper:
                 cells = element.find_elements_by_tag_name("td")
                 firstname = cells[2].text
                 lastname = cells[1].text
+                address = cells[3].text
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                all_emails = cells[4].text
                 all_phones = cells[5].text
                 # self.contact_cache.append(Contact(id=id, firstname=firstname, lastname=lastname))
                 self.contact_cache.append(
-                     Contact(id=id, firstname=firstname, lastname=lastname, all_phones_from_home_page=all_phones,))
+                     Contact(id=id, firstname=firstname, lastname=lastname, address=address,
+                             all_emails_from_home_page=all_emails, all_phones_from_home_page=all_phones,))
 
         return list(self.contact_cache)
