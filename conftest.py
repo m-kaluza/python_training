@@ -4,8 +4,6 @@ import json
 import os.path
 import importlib
 
-
-
 fixture = None
 target = None
 
