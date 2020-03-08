@@ -1,14 +1,16 @@
 [
   {
-    "name": "",
-    "header": "",
+    "py/object": "model.group.Group",
     "footer": "",
-    "id": null
+    "header": "",
+    "id": null,
+    "name": ""
   },
   {
-    "name": "name6",
-    "header": "header   wU!",
-    "footer": "footer-1mEa/",
-    "id": null
+    "py/object": "model.group.Group",
+    "footer": "footer>",
+    "header": "headerWZ z/w k",
+    "id": null,
+    "name": "name/ "
   }
 ]
