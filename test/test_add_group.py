@@ -1,26 +1,13 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
 import pytest
-import random
-import string
+from data.add_group import constatn as testdata
 
 
-def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits + string.punctuation + " "*10
-    return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
-
-
-testdata = [Group(name="", header="", footer="")] + [
-    Group(name=random_string("name", 5), header=random_string("header", 10), footer=random_string("footer", 15))
-    for i in range(1)
-]
-
-
-
-    # Group(name=name, header=header, footer=footer)
-    # for name in ["", random_string("name", 5)]
-    # for header in ["", random_string("header", 10)]
-    # for footer in ["", random_string("footer", 15)]
+# Group(name=name, header=header, footer=footer)
+# for name in ["", random_string("name", 5)]
+# for header in ["", random_string("header", 10)]
+# for footer in ["", random_string("footer", 15)]
 
 
 @pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
