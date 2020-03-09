@@ -9,6 +9,7 @@ from fixture.db import DbFixture
 fixture = None
 target = None
 
+
 def load_config(file):
     global target
     if target is None:
@@ -33,9 +34,12 @@ def app(request):
 @pytest.fixture(scope="session")
 def db(request):
     db_config = load_config(request.config.getoption("--target"))["db"]
-    dbfixture = DbFixture(host=db_config["host"], name=db_config["name"], user=db_config["user"], password=db_config["passwprd"])
+    dbfixture = DbFixture(host=db_config["host"], name=db_config["name"], user=db_config["user"],
+                          password=db_config["password"])
+
     def fin():
         dbfixture.destroy()
+
     request.addfinalizer(fin)
     return dbfixture
 
