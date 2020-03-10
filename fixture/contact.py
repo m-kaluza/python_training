@@ -63,6 +63,17 @@ class ContactHelper:
         wd.find_element_by_xpath("(//input[@name='update'])[2]").click()
         self.contact_cache = None
 
+    def modify_contact_by_id(self, id, new_contact_data):
+        wd = self.app.wd
+        # init contact edition
+        # self.app.open_home_page()
+        self.select_contact_by_id(id)
+        wd.find_elements_by_xpath("//img[@alt='Edit']").click()
+        self.fill_contact_form(new_contact_data)
+        # submit contact edition
+        wd.find_element_by_xpath("(//input[@name='update'])[2]").click()
+        self.contact_cache = None
+
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
@@ -152,7 +163,7 @@ class ContactHelper:
                 all_phones = cells[5].text
                 # self.contact_cache.append(Contact(id=id, firstname=firstname, lastname=lastname))
                 self.contact_cache.append(
-                     Contact(id=id, firstname=firstname, lastname=lastname, address=address,
-                             all_emails_from_home_page=all_emails, all_phones_from_home_page=all_phones,))
+                    Contact(id=id, firstname=firstname, lastname=lastname, address=address,
+                            all_emails_from_home_page=all_emails, all_phones_from_home_page=all_phones, ))
 
         return list(self.contact_cache)
