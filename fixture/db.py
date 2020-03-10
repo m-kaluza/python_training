@@ -10,7 +10,7 @@ class DbFixture:
         self.name = name
         self.user = user
         self.password = password
-        self.connection = pymysql.connect(host=host, database=name, user=user, password=password)
+        self.connection = pymysql.connect(host=host, database=name, user=user, password=password, autocommit=True)
 
     def get_group_list(self):
         list = []
@@ -28,10 +28,10 @@ class DbFixture:
         list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select id, firstname, lastname, title, address, mobile, email from addressbook")
+            cursor.execute("select id, firstname, lastname, address, mobile, email from addressbook")
             for row in cursor:
-                (id, firstname, lastname, title, address, mobile, email) = row
-                list.append(Contact(id=str(id), lastname=lastname, title=title, address=address, mobile=mobile,
+                (id, firstname, lastname, address, mobile, email) = row
+                list.append(Contact(id=str(id), lastname=lastname, address=address, mobile=mobile,
                                     email=email))
         finally:
             cursor.close()
