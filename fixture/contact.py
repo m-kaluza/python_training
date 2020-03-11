@@ -141,6 +141,12 @@ class ContactHelper:
         wd.switch_to.alert.accept()
         self.contact_cache = None
 
+    def add_contact_group_to_contact_by_id(self, id):
+        wd = self.app.wd
+        # Select some contact
+        self.select_contact_by_id(id)
+        wd.find_element_by_name("to_group").click()
+
     def count(self):
         wd = self.app.wd
         self.app.open_home_page()
