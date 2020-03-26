@@ -53,3 +53,33 @@ def verify_contact_deleted(db, non_empty_contact_list, random_contact, app, chec
     assert old_contacts == new_contacts
     if check_ui:
         assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.group.get_group_list(), key=Contact.id_or_max)
+
+
+@given('a non-empty contact list')
+def non_empty_contact_list(app, db):
+    if len(db.get_contact_list()) == 0:
+        app.contact.create(Contact(firstname="Monika", lastname="Kowal"))
+    return db.get_contact_list()
+
+
+@given('a random contact from the list')
+def random_contact(non_empty_contact_list):
+    return random.choice(non_empty_contact_list)
+
+
+@when('I modify the contact from the list')
+def modify_contact(app, random_contact):
+    new_contact_data = Contact(firstname="Joanna", lastname="Nowakowska", mobile="604153233",
+                               home="326305050", work="326502021", email="joanna@interia.pl",
+                               address="ul. Międzyblokowa 11, Katowice")
+    app.contact.modify_contact_by_id(random_contact.id, new_contact_data)
+
+
+@then('the new contact list is equal to the old contact list')
+def verify_contact_modify(db, non_empty_contact_list, random_contact, app, check_ui):
+    old_contacts = non_empty_contact_list
+    new_contacts = db.get_group_list()
+    assert len(old_contacts) == app.contact.count()
+    assert old_contacts == new_contacts
+    if check_ui:
+        assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
