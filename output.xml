@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 2.9 (Python 3.8.0 on win32)" generated="20200330 22:11:47.172">
+<suite id="s1" name="Group Scenarios" source="C:\python_training\rf\group_scenarios.robot">
+<kw name="Init Fixtures" library="rf.AddressBook" type="setup">
+<msg timestamp="20200330 22:11:56.619" level="FAIL">TypeError: __init__() missing 1 required positional argument: 'password'</msg>
+<status status="FAIL" starttime="20200330 22:11:47.383" endtime="20200330 22:11:56.619"></status>
+</kw>
+<test id="s1-t1" name="Add new group">
+<status status="FAIL" starttime="20200330 22:11:56.619" endtime="20200330 22:11:56.621" critical="yes">Parent suite setup failed:
+TypeError: __init__() missing 1 required positional argument: 'password'</status>
+</test>
+<test id="s1-t2" name="Delete group">
+<status status="FAIL" starttime="20200330 22:11:56.628" endtime="20200330 22:11:56.629" critical="yes">Parent suite setup failed:
+TypeError: __init__() missing 1 required positional argument: 'password'</status>
+</test>
+<kw name="Destroy Fixtures" library="rf.AddressBook" type="teardown">
+<msg timestamp="20200330 22:11:56.634" level="FAIL">AttributeError: 'AddressBook' object has no attribute 'dbfixture'</msg>
+<status status="FAIL" starttime="20200330 22:11:56.634" endtime="20200330 22:11:56.634">AttributeError: 'AddressBook' object has no attribute 'dbfixture'</status>
+</kw>
+<status status="FAIL" starttime="20200330 22:11:47.175" endtime="20200330 22:11:56.635">Suite setup failed:
+TypeError: __init__() missing 1 required positional argument: 'password'
+
+Also suite teardown failed:
+AttributeError: 'AddressBook' object has no attribute 'dbfixture'</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2">Critical Tests</stat>
+<stat pass="0" fail="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="2" id="s1" name="Group Scenarios">Group Scenarios</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

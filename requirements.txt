@@ -1,0 +1,10 @@
+selenium
+pytest==3.0.0
+pytest_bdd
+jsonpickle
+pony
+pymysql
+mysql-connector-python-rf
+lxml-4.4.3-cp38-cp38-win32.whl
+pytest-allure-adaptor
+robotframework-python3
