@@ -1,0 +1,103 @@
+
+Group Scenarios Test Log
+Generated
+20200406 08:40:53 GMT +02:00
+1 hour 11 minutes ago
+REPORT
+Test Statistics
+Total Statistics
+	
+Total
+	
+Pass
+	
+Fail
+	
+Elapsed
+	
+Pass / Fail
+Critical Tests
+	2	0	2	00:00:01	
+All Tests
+	2	0	2	00:00:01	
+Statistics by Tag
+	
+Total
+	
+Pass
+	
+Fail
+	
+Elapsed
+	
+Pass / Fail
+No Tags					
+Statistics by Suite
+	
+Total
+	
+Pass
+	
+Fail
+	
+Elapsed
+	
+Pass / Fail
+Group Scenarios
+	2	0	2	00:00:11	
+Test Execution Log
+00:00:11.180 SUITE Group Scenarios
+Full Name: 	Group Scenarios
+Source: 	C:\python_training\rf\group_scenarios.robot
+Start / End / Elapsed: 	20200406 08:40:41.962 / 20200406 08:40:53.142 / 00:00:11.180
+Status: 	2 critical test, 0 passed, 2 failed
+2 test total, 0 passed, 2 failed
+00:00:08.283 SETUP rf.AddressBook . Init Fixtures
+Start / End / Elapsed: 	20200406 08:40:42.252 / 20200406 08:40:50.535 / 00:00:08.283
+00:00:01.427 TEARDOWN rf.AddressBook . Destroy Fixtures
+Start / End / Elapsed: 	20200406 08:40:51.715 / 20200406 08:40:53.142 / 00:00:01.427
+00:00:01.157 TEST Add new group
+Full Name: 	Group Scenarios.Add new group
+Start / End / Elapsed: 	20200406 08:40:50.536 / 20200406 08:40:51.693 / 00:00:01.157
+Status: 	FAIL (critical)
+Message: 	Keyword 'rf.AddressBook.Group List Should Be Equal' expected 2 arguments, got 1.
+00:00:00.001 KEYWORD ${old_list} = rf.AddressBook . Get Group List
+Start / End / Elapsed: 	20200406 08:40:50.537 / 20200406 08:40:50.538 / 00:00:00.001
+08:40:50.538 	INFO 	${old_list} = [173:Name  , 174:Name headerWZ z/w k footer>, 175:  , 176:name/  headerWZ z/w k footer>, 177:Name  , 178:name/  headerWZ z/w k footer>, 179:  , 181:name1 header1 footer1, 182:name2 header2 footer2, 18... 	
+00:00:00.001 KEYWORD ${group} = rf.AddressBook . New Group name1, header1, footer1
+Start / End / Elapsed: 	20200406 08:40:50.538 / 20200406 08:40:50.539 / 00:00:00.001
+08:40:50.539 	INFO 	${group} = None:name1 header1 footer1 	
+00:00:01.147 KEYWORD rf.AddressBook . Create Group ${group}
+Start / End / Elapsed: 	20200406 08:40:50.539 / 20200406 08:40:51.686 / 00:00:01.147
+00:00:00.002 KEYWORD ${new_list} = rf.AddressBook . Get Group List
+Start / End / Elapsed: 	20200406 08:40:51.687 / 20200406 08:40:51.689 / 00:00:00.002
+08:40:51.689 	INFO 	${new_list} = [173:Name  , 174:Name headerWZ z/w k footer>, 175:  , 176:name/  headerWZ z/w k footer>, 177:Name  , 178:name/  headerWZ z/w k footer>, 179:  , 181:name1 header1 footer1, 182:name2 header2 footer2, 18... 	
+00:00:00.000 KEYWORD Collections . Append To List ${old_list} ${group}
+Documentation: 	
+
+Adds values to the end of list.
+Start / End / Elapsed: 	20200406 08:40:51.690 / 20200406 08:40:51.690 / 00:00:00.000
+00:00:00.001 KEYWORD rf.AddressBook . Group List Should Be Equal ${old_list} ${new_list}
+Start / End / Elapsed: 	20200406 08:40:51.691 / 20200406 08:40:51.692 / 00:00:00.001
+08:40:51.692 	FAIL 	Keyword 'rf.AddressBook.Group List Should Be Equal' expected 2 arguments, got 1. 	
+00:00:00.013 TEST Delete group
+Full Name: 	Group Scenarios.Delete group
+Start / End / Elapsed: 	20200406 08:40:51.694 / 20200406 08:40:51.707 / 00:00:00.013
+Status: 	FAIL (critical)
+Message: 	Evaluating expression 'random.randrange(13)random' failed: SyntaxError: unexpected EOF while parsing (<string>, line 1)
+00:00:00.003 KEYWORD ${old_list} = rf.AddressBook . Get Group List
+Start / End / Elapsed: 	20200406 08:40:51.695 / 20200406 08:40:51.698 / 00:00:00.003
+08:40:51.698 	INFO 	${old_list} = [173:Name  , 174:Name headerWZ z/w k footer>, 175:  , 176:name/  headerWZ z/w k footer>, 177:Name  , 178:name/  headerWZ z/w k footer>, 179:  , 181:name1 header1 footer1, 182:name2 header2 footer2, 18... 	
+00:00:00.000 KEYWORD ${len} = BuiltIn . Get Length ${old_list}
+Documentation: 	
+
+Returns and logs the length of the given item as an integer.
+Start / End / Elapsed: 	20200406 08:40:51.699 / 20200406 08:40:51.699 / 00:00:00.000
+08:40:51.699 	INFO 	Length is 13 	
+08:40:51.699 	INFO 	${len} = 13 	
+00:00:00.007 KEYWORD ${index} = BuiltIn . Evaluate random.randrange(${len})random
+Documentation: 	
+
+Evaluates the given expression in Python and returns the results.
+Start / End / Elapsed: 	20200406 08:40:51.699 / 20200406 08:40:51.706 / 00:00:00.007
+08:40:51.706 	FAIL 	Evaluating expression 'random.randrange(13)random' failed: SyntaxError: unexpected EOF while parsing (<string>, line 1) 	
